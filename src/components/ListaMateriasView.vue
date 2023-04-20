@@ -45,7 +45,7 @@
           to="/lista-de-materias">
           Lista de materias
         </v-btn>
-        <v-btn type="signOut" icon class="fillClass">  <img src = "@/assets/exit.png"/> </v-btn>
+        <v-btn type="signOut" to="/" icon class="fillClass">  <img src = "@/assets/exit.png"/> </v-btn>
       </div>
     </v-app-bar> 
     <h1 class="colorB--text font-weight-bold mt-8 mx-2"> Materias Inscritas</h1> 
@@ -68,10 +68,9 @@ export default {
 
   methods: {
     signOut(){
-      this.signOut(auth)
-      router.push({ path: '/' })
-
+      signOut(auth)
       .then(()=>{
+        router.push({ path: '/' })
       })
     }
   }

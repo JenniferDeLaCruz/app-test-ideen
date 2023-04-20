@@ -44,6 +44,7 @@
           to="/lista-de-materias">
           Lista de materias
         </v-btn>
+        <v-btn type="signOut" to="/" icon class="fillClass">  <img src = "@/assets/exit.png"/> </v-btn>
       </div>
     </v-app-bar>
 
@@ -68,6 +69,14 @@ export default {
   name: 'HomeView',
   components: {
     HomePairs
+  },
+  methods: {
+    signOut(){
+      signOut(auth)
+      .then(()=>{
+        router.push({ path: '/' })
+      })
+    }
   }
 }
 </script>
