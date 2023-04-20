@@ -1,18 +1,19 @@
+
 <template>
-  <div class="home">
+  <div class="listaMaterias">
     <v-app-bar
       app
       color="colorB"
       dark>
       <div class="d-flex align-center">
-        <router-link to="/home">
+        <router-link to="/">
           <v-img
             alt="Tec de Monterrey Logo"
             class="shrink"
             contain
             src="../assets/logoTec.png"
             transition="scale-transition"
-            width="18vw"
+            width="16vw"
           />
         </router-link>
         
@@ -44,30 +45,35 @@
           to="/lista-de-materias">
           Lista de materias
         </v-btn>
+        <v-btn type="signOut" icon class="fillClass">  <img src = "@/assets/exit.png"/> </v-btn>
       </div>
-    </v-app-bar>
-
-    <h1 class="colorB--text font-weight-bold mt-8">INFORMACIÓN DEL ALUMNO</h1> 
-    <v-img
-          alt="Juan Escutia"
-          class="shrink rounded-circle mx-auto mt-8"
-          contain
-          src="../assets/juan-escutia2.jpeg"
-          transition="scale-transition"
-          width="200"
-        />
-        <HomePairs></HomePairs>
+    </v-app-bar> 
+    <h1 class="colorB--text font-weight-bold mt-8 mx-2"> Materias Inscritas</h1> 
+    <MateriasCards></MateriasCards>
   </div>
 </template>
-
 <script>
+
+import { auth } from '@/plugins/firebaseConfig'
+import { signOut } from 'firebase/auth'
+
 // @ is an alias to /src
-import HomePairs from '@/components/HomePairs.vue'
+import MateriasCards from '@/components/MateriasCards.vue'
 
 export default {
-  name: 'HomeView',
+  name: 'MateriasView',
   components: {
-    HomePairs
+    MateriasCards
+  },
+
+  methods: {
+    signOut(){
+      this.signOut(auth)
+      router.push({ path: '/' })
+
+      .then(()=>{
+      })
+    }
   }
 }
 </script>
